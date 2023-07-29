@@ -1,0 +1,12 @@
+---
+- name: Set user default shell to fish.
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/fish
+  become: true
+
+- name: Template fish config file.
+  ansible.builtin.template:
+    src: config.fish.j2
+    dest: /home/{{ ansible_user_id }}/.config/fish/config.fish
+    mode: 0644

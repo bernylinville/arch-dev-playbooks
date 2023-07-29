@@ -37,3 +37,5 @@ ansible-playbook -i inventory main.yml -K
 ```
 
 originally inspired by [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
+
+[playbooks_vars_facts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html)
