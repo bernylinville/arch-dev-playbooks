@@ -1,0 +1,8 @@
+---
+pacman_installed_packages:
+  - cowsay
+  - neofetch
+
+pacman_uninstalled_packages: []
+
+pacman_upgrade_all_packages: true

@@ -1,0 +1,9 @@
+---
+- name: Configure host.
+  hosts: all
+
+  vars_files:
+    - config.yml
+
+  tasks:
+    - import_tasks: tasks/pacman.yml

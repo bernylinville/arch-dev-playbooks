@@ -1,0 +1,25 @@
+---
+- name: Update pacman cache.
+  community.general.pacman:
+    update_cache: true
+  become: true
+
+- name: Ensure blacklisted pacman packages are not installed.
+  community.general.pacman:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ pacman_uninstalled_packages }}"
+  become: true
+
+- name: Ensure configured pacman packages are installed.
+  community.general.pacman:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ pacman_installed_packages }}"
+  become: true
+
+- name: Upgrade all pacman packages (if configured).
+  community.general.pacman:
+    upgrade: true
+  when: pacman_upgrade_all_packages
+  become: true
