@@ -2,6 +2,9 @@
 pacman_installed_packages:
   - cowsay
   - neofetch
+  - git
+  - fish
+  - vim
 
 pacman_uninstalled_packages: []
 
