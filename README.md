@@ -39,3 +39,6 @@ ansible-playbook -i inventory main.yml -K
 originally inspired by [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
 
 [playbooks_vars_facts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html)
+
+[字体配置/中文](https://wiki.archlinuxcn.org/wiki/%E5%AD%97%E4%BD%93%E9%85%8D%E7%BD%AE/%E4%B8%AD%E6%96%87)
+

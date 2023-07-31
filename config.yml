@@ -5,6 +5,21 @@ pacman_installed_packages:
   - git
   - fish
   - vim
+  - ansible-lint
+  - steam
+  - ttf-liberation
+  - wqy-zenhei
+  - ttf-roboto
+  - noto-fonts
+  - noto-fonts-cjk
+  - adobe-source-han-sans-cn-fonts
+  - adobe-source-han-serif-cn-fonts
+  - ttf-dejavu
+  - lib32-mesa
+  - vulkan-radeon
+  - lib32-vulkan-radeon
+  - vulkan-icd-loader
+  - lib32-vulkan-icd-loader
 
 pacman_uninstalled_packages: []
 

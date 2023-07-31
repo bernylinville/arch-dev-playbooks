@@ -1,0 +1,20 @@
+---
+- name: Download file with checksum url (sha512)
+  ansible.builtin.get_url:
+    url: https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-9/GE-Proton8-9.tar.gz
+    dest: /home/{{ ansible_user_id }}/Downloads/GE-Proton8-9.tar.gz
+    checksum: sha512:https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-9/GE-Proton8-9.sha512sum
+    mode: "0755"
+
+- name: Create steam compatibilitytools directories
+  ansible.builtin.file:
+    path: /home/{{ ansible_user_id }}/.steam/root/compatibilitytools.d
+    owner: kchou
+    group: kchou
+    mode: "0755"
+    state: directory
+
+- name: Extract proton-ge into ~/.steam/root/compatibilitytools.d
+  ansible.builtin.unarchive:
+    src: /home/{{ ansible_user_id }}/Downloads/GE-Proton8-9.tar.gz
+    dest: /home/{{ ansible_user_id }}/.steam/root/compatibilitytools.d

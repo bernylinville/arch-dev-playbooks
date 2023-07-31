@@ -9,4 +9,18 @@
   ansible.builtin.template:
     src: config.fish.j2
     dest: /home/{{ ansible_user_id }}/.config/fish/config.fish
-    mode: 0644
+    mode: "0644"
+
+- name: Create fontconfig directories
+  ansible.builtin.file:
+    path: /home/{{ ansible_user_id }}/.config/fontconfig
+    owner: kchou
+    group: kchou
+    mode: "0755"
+    state: directory
+
+- name: Template font config file.
+  ansible.builtin.template:
+    src: fonts.conf.j2
+    dest: /home/{{ ansible_user_id }}/.config/fontconfig/fonts.conf
+    mode: "0644"
