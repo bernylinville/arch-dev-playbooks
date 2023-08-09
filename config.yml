@@ -21,7 +21,22 @@ pacman_installed_packages:
   - vulkan-icd-loader
   - lib32-vulkan-icd-loader
   - net-tools
+  - vagrant
+  - virtualbox-host-modules-arch
+  - virtualbox
+  - tmux
+  - x11vnc
+  - neovim
+  - docker
+  - docker-compose
+  - bash-completion
 
 pacman_uninstalled_packages: []
 
 pacman_upgrade_all_packages: true
+
+docker_users:
+  - kchou
+
+docker_daemon_options:
+  storage-driver: "btrfs"

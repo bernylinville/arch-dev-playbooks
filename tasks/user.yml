@@ -1,15 +1,9 @@
 ---
-- name: Set user default shell to fish.
+- name: Set user default shell.
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
-    shell: /usr/bin/fish
+    shell: /bin/bash
   become: true
-
-- name: Template fish config file.
-  ansible.builtin.template:
-    src: config.fish.j2
-    dest: /home/{{ ansible_user_id }}/.config/fish/config.fish
-    mode: "0644"
 
 - name: Create fontconfig directories
   ansible.builtin.file:
@@ -24,3 +18,28 @@
     src: fonts.conf.j2
     dest: /home/{{ ansible_user_id }}/.config/fontconfig/fonts.conf
     mode: "0644"
+
+- name: Ensure docker users are added to the docker group.
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: docker
+    append: true
+  with_items: "{{ docker_users }}"
+  become: true
+
+- name: Ensure /etc/docker/ directory exists.
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    mode: 0755
+  when: docker_daemon_options.keys() | length > 0
+  become: true
+
+- name: Configure Docker daemon options.
+  ansible.builtin.copy:
+    content: "{{ docker_daemon_options | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    mode: 0644
+  when: docker_daemon_options.keys() | length > 0
+  become: true
+  notify: restart docker
