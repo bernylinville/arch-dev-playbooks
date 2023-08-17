@@ -1,6 +1,12 @@
 ---
-- name: restart docker
+- name: Restart docker.
   ansible.builtin.service:
     name: docker
+    state: restarted
+  become: true
+
+- name: Restart reflector.
+  ansible.builtin.service:
+    name: reflector
     state: restarted
   become: true

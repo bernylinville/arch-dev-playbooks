@@ -12,5 +12,5 @@
     - name: Apply user tasks
       ansible.builtin.import_tasks: tasks/user.yml
 
-    - name: Apply steam tasks
-      ansible.builtin.import_tasks: tasks/steam.yml
+    # - name: Apply steam tasks
+    #   ansible.builtin.import_tasks: tasks/steam.yml

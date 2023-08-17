@@ -30,6 +30,7 @@ pacman_installed_packages:
   - docker
   - docker-compose
   - bash-completion
+  - reflector
 
 pacman_uninstalled_packages: []
 
